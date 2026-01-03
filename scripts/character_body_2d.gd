@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 var bullet_scene = preload("res://scenes/bullet.tscn")
 @onready var shooty_part: Node2D = $ShootyPart
+@onready var shooty_part_two: Node2D = $ShootyPartTwo
+
 const SPEED = 400.0
 const ACCEL = 1500
 const FRIC = 1400
@@ -17,6 +19,10 @@ func _physics_process(delta: float) -> void:
 		bullet.global_position = shooty_part.global_position
 		bullet.direction = (get_global_mouse_position() - global_position).normalized()
 		get_parent().add_child(bullet)
+		var bulletTwo = bullet_scene.instantiate()
+		bulletTwo.global_position = shooty_part_two.global_position
+		bulletTwo.direction = (get_global_mouse_position() - global_position).normalized()
+		get_parent().add_child(bulletTwo)
 
 
 func get_input():
