@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3i16q6nbl18b"
-path="res://.godot/imported/slime1.png-af8a9b0bb11714880518ba00d1449d43.ctex"
+uid="uid://tn4fw3pkyrke"
+path="res://.godot/imported/realGrass-Sheet.png-ddaac86177924b1c24b87a4e4c45ac74.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/slime1.png"
-dest_files=["res://.godot/imported/slime1.png-af8a9b0bb11714880518ba00d1449d43.ctex"]
+source_file="res://assets/realGrass-Sheet.png"
+dest_files=["res://.godot/imported/realGrass-Sheet.png-ddaac86177924b1c24b87a4e4c45ac74.ctex"]
 
 [params]
 

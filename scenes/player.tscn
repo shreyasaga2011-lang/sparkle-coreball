@@ -10,10 +10,12 @@ radius = 56.0
 script = ExtResource("1_g2els")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+light_mask = 2
+visibility_layer = 2
 texture_filter = 1
 position = Vector2(34.154186, 6)
 rotation = 1.5707964
-scale = Vector2(3.9098985, 3.8727398)
+scale = Vector2(3.947, 3.91)
 texture = ExtResource("2_g2els")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
