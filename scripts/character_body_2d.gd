@@ -3,6 +3,7 @@ extends CharacterBody2D
 var bullet_scene = preload("res://scenes/bullet.tscn")
 @onready var shooty_part: Node2D = $ShootyPart
 @onready var shooty_part_two: Node2D = $ShootyPartTwo
+@onready var detector: Area2D = $detector
 
 const SPEED = 400.0
 const ACCEL = 1500
@@ -42,6 +43,12 @@ func player_movement(delta):
 	else:
 		velocity += (input * ACCEL * delta)
 		velocity = velocity.limit_length(SPEED)
-	
-
 	move_and_slide()
+
+var health = 2
+
+func healthTick():
+	health -= 1
+	if(health == 0):
+		queue_free()
+		get_tree().change_scene_to_file("res://scenes/deathscreen.tscn")
