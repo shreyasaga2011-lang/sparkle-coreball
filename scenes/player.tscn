@@ -32,7 +32,7 @@ shape = SubResource("CircleShape2D_g2els")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="KillTracker" type="Label" parent="Camera2D"]
+[node name="KillTracker" type="Label" parent="Camera2D" groups=["kill_tracker"]]
 offset_left = -212.85713
 offset_top = -161.42856
 offset_right = -48.571426
