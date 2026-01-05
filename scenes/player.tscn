@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://be8qbmt0fe144"]
+[gd_scene load_steps=7 format=3 uid="uid://be8qbmt0fe144"]
 
 [ext_resource type="Script" uid="uid://bss4mgihbqfdc" path="res://scripts/character_body_2d.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://brs8bjhtxt7ub" path="res://assets/doubleGunPerson-export.png" id="2_g2els"]
+[ext_resource type="Script" uid="uid://ckbps7rhuxxgg" path="res://scripts/kill_tracker.gd" id="3_dqkch"]
 [ext_resource type="Script" uid="uid://c4v7ctfgjictu" path="res://scripts/area_2d.gd" id="3_qhqgy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g2els"]
@@ -11,6 +12,7 @@ radius = 56.0
 radius = 58.034473
 
 [node name="player" type="CharacterBody2D"]
+scale = Vector2(0.7, 0.7)
 collision_layer = 255
 collision_mask = 255
 script = ExtResource("1_g2els")
@@ -30,6 +32,13 @@ shape = SubResource("CircleShape2D_g2els")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
+[node name="KillTracker" type="Label" parent="Camera2D"]
+offset_left = -212.85713
+offset_top = -161.42856
+offset_right = -48.571426
+offset_bottom = -112.42856
+script = ExtResource("3_dqkch")
+
 [node name="ShootyPart" type="Node2D" parent="."]
 position = Vector2(103, -33)
 
@@ -44,6 +53,8 @@ script = ExtResource("3_qhqgy")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detector"]
 position = Vector2(0, 5)
 shape = SubResource("CircleShape2D_qhqgy")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [connection signal="area_entered" from="detector" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_entered" from="detector" to="detector" method="_on_area_entered"]
