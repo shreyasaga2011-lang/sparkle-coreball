@@ -4,7 +4,10 @@ extends Area2D
 var counter := 0
 @export var speed := 600.0
 var direction := Vector2.ZERO
-
+var size_multiplier: float = 1.0
+func _ready() -> void:
+	if size_multiplier != 1.0:
+		scale = Vector2(size_multiplier, size_multiplier)
 func _physics_process(delta):
 	global_position += direction * speed * delta
 
