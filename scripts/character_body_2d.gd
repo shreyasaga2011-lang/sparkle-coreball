@@ -20,19 +20,23 @@ func _physics_process(delta: float) -> void:
 	look_at(get_global_mouse_position())
 
 	if Input.is_action_just_pressed("shoot"):
-		if big_bullet_upgrade == false:
-			var bullet = bullet_scene.instantiate()
-			bullet.global_position = shooty_part.global_position
-			bullet.direction = (get_global_mouse_position() - global_position).normalized()
-			get_parent().add_child(bullet)
-			var bulletTwo = bullet_scene.instantiate()
-			bulletTwo.global_position = shooty_part_two.global_position
-			bulletTwo.direction = (get_global_mouse_position() - global_position).normalized()
-			get_parent().add_child(bulletTwo)
+		if cooldown == true:
+			if upgrades.explosionBool == false:
+				var bullet = bullet_scene.instantiate()
+				bullet.global_position = shooty_part.global_position
+				bullet.direction = (get_global_mouse_position() - global_position).normalized()
+				get_parent().add_child(bullet)
+				var bulletTwo = bullet_scene.instantiate()
+				bulletTwo.global_position = shooty_part_two.global_position
+				bulletTwo.direction = (get_global_mouse_position() - global_position).normalized()
+				get_parent().add_child(bulletTwo)
+				cooldown = false
+				await get_tree().create_timer(firerate * upgrades.multi).timeout
+				cooldown = true
 		
 	if Input.is_action_just_pressed("shoot"):
 		if cooldown == true:
-			if big_bullet_upgrade == true:
+			if upgrades.explosionBool == true:
 				var bigBullet = big_bullet.instantiate()
 				bigBullet.global_position = explosive_shooty.global_position
 				bigBullet.direction = (get_global_mouse_position() - global_position).normalized()

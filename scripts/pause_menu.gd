@@ -1,6 +1,7 @@
 extends Control
 @onready var resume_button: Button = $PanelContainer/ResumeButton
 @onready var upgrade_firerate: Button = $PanelContainer/VBoxContainer/UpgradeFirerate
+@onready var exploding_bullets: Button = $PanelContainer/VBoxContainer/ExplodingBullets
 
 
 func resume():
@@ -39,3 +40,13 @@ func _on_upgrade_firerate_pressed() -> void:
 		upgrade_firerate.text = "Upgrade Firerate (current upgrades: " + str(fireUpgradeCount) + ")"
 	else:
 		upgrade_firerate.text = "Upgrade Firerate (current upgrades: MAX)"
+
+
+
+
+func _on_exploding_bullets_pressed() -> void:
+	upgrades.explosionUpgrade()
+	if upgrades.explosionBool == true:
+		exploding_bullets.text = "Explosion Shot EQUIPED"
+	else:
+		exploding_bullets.text = "Explosion Shot"
