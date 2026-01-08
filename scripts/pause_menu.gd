@@ -43,10 +43,17 @@ func _on_upgrade_firerate_pressed() -> void:
 
 
 
+var exploBool = false
 
 func _on_exploding_bullets_pressed() -> void:
-	upgrades.explosionUpgrade()
-	if upgrades.explosionBool == true:
+	if exploBool == true:
+		exploBool = false
+	if KillTrackerNode.currentMoney >= 1000:
+		KillTrackerNode.buyStuffExplodingBullets()
+		upgrades.explosionUpgrade()
+		exploBool = true
+	if exploBool == true:
 		exploding_bullets.text = "Explosion Shot EQUIPED"
 	else:
 		exploding_bullets.text = "Explosion Shot"
+	PauseGlobal.buyingFlash()

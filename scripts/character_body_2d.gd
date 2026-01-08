@@ -64,10 +64,11 @@ func player_movement(delta):
 		velocity = velocity.limit_length(SPEED)
 	move_and_slide()
 
-var health = 2
+var health = 4
 
 func healthTick():
 	health -= 1
+	
 	if(health == 0):
 		queue_free()
 		get_tree().change_scene_to_file("res://scenes/deathscreen.tscn")

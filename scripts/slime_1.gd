@@ -41,6 +41,7 @@ func die():
 	collision_mask = 0
 	if kill_tracker:
 		KillTrackerNode.add_kill()
+		KillTrackerNode.add_money()
 	queue_free()
 
 func _physics_process(delta: float) -> void:
