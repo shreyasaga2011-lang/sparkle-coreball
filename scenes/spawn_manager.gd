@@ -1,4 +1,6 @@
 extends Node2D
+@export var enemy_scene_four: PackedScene
+@export var enemy_scene_three: PackedScene
 @export var enemy_scene_two: PackedScene
 @export var enemy_scene: PackedScene
 @export var spawn_radius := 2000
@@ -12,20 +14,47 @@ var phase_time := 0.0
 
 func _ready() -> void:
 	WaveTick.waveTickGlobal()
-	timer.wait_time = 0.4
+	timer.wait_time = 0.6
 	timer.timeout.connect(spawn_enemy)
 	timer.start()
 
-	await get_tree().create_timer(20.0).timeout
+	await get_tree().create_timer(5.0).timeout
 	timer.stop()
 
 	WaveTick.waveTickGlobal()
-	timer.wait_time = 0.3
+	timer.wait_time = 0.5
 	timer.timeout.connect(spawn_enemy_two)
 	timer.start()
 	
-	await get_tree().create_timer(20.0).timeout
+	await get_tree().create_timer(5.0).timeout
 	timer.stop()
+	
+	WaveTick.waveTickGlobal()
+	timer.wait_time = 0.4
+	timer.timeout.connect(spawn_enemy_three)
+	timer.start()
+	
+	await get_tree().create_timer(5.0).timeout
+	timer.stop()
+	
+	WaveTick.waveTickGlobal()
+	timer.wait_time = 0.4
+	timer.timeout.connect(spawn_enemy)
+	timer.timeout.connect(spawn_enemy_two)
+	timer.timeout.connect(spawn_enemy_three)
+	timer.start()
+	await get_tree().create_timer(5.0).timeout
+	timer.stop()
+	
+	WaveTick.waveTickGlobal()
+	timer.wait_time = 0.4
+	timer.timeout.connect(spawn_enemy)
+	timer.timeout.connect(spawn_enemy_two)
+	timer.timeout.connect(spawn_enemy_four)
+	timer.timeout.connect(spawn_enemy_three)
+	timer.start()
+
+	
 	
 func spawn_enemy():
 
@@ -34,7 +63,7 @@ func spawn_enemy():
 		return
 
 	var angle = randf() * TAU
-	var distance = sqrt(randf()) * spawn_radius + 300       
+	var distance = sqrt(randf()) * spawn_radius + 1000
 	var offset = Vector2(cos(angle), sin(angle)) * distance
 	var pos = player.global_position + offset
 
@@ -49,11 +78,43 @@ func spawn_enemy_two():
 		return
 
 	var angle = randf() * TAU
-	var distance = sqrt(randf()) * spawn_radius + 300       
+	var distance = sqrt(randf()) * spawn_radius + 1000       
 	var offset = Vector2(cos(angle), sin(angle)) * distance
 	var pos = player.global_position + offset
 
 	var enemy = enemy_scene_two.instantiate()
+
+	enemy_container.add_child(enemy)
+	enemy.global_position = pos
+
+
+func spawn_enemy_three():
+	if not is_instance_valid(player):
+		print("asd")
+		return
+
+	var angle = randf() * TAU
+	var distance = sqrt(randf()) * spawn_radius + 1000       
+	var offset = Vector2(cos(angle), sin(angle)) * distance
+	var pos = player.global_position + offset
+
+	var enemy = enemy_scene_three.instantiate()
+
+	enemy_container.add_child(enemy)
+	enemy.global_position = pos
+
+
+func spawn_enemy_four():
+	if not is_instance_valid(player):
+		print("asd")
+		return
+
+	var angle = randf() * TAU
+	var distance = sqrt(randf()) * spawn_radius + 1000       
+	var offset = Vector2(cos(angle), sin(angle)) * distance
+	var pos = player.global_position + offset
+
+	var enemy = enemy_scene_four.instantiate()
 
 	enemy_container.add_child(enemy)
 	enemy.global_position = pos

@@ -1,20 +1,20 @@
 [gd_scene load_steps=4 format=3 uid="uid://c16ftwluixct0"]
 
-[ext_resource type="Script" uid="uid://6d0kbaq8xyke" path="res://scripts/slime_1.gd" id="1_5p3y8"]
-[ext_resource type="Texture2D" uid="uid://d3i16q6nbl18b" path="res://assets/slime1.png" id="2_nwie8"]
+[ext_resource type="Script" uid="uid://d3xarl3ndaq27" path="res://scripts/tankslime.gd" id="1_hfgmt"]
+[ext_resource type="Texture2D" uid="uid://dle7a8ukuw7rp" path="res://assets/TankSlime-export.png" id="2_4u5h8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s31t4"]
 radius = 50.0
 
-[node name="slime1" type="Area2D" groups=["enemy"]]
+[node name="TankSlime" type="Area2D" groups=["enemy"]]
 collision_layer = 4
 collision_mask = 2
-script = ExtResource("1_5p3y8")
+script = ExtResource("1_hfgmt")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(3.91, 3.91)
-texture = ExtResource("2_nwie8")
+texture = ExtResource("2_4u5h8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["enemy"]]
 light_mask = 2

@@ -22,3 +22,6 @@ func buyFireRateUpgrade():
 	currentMoney -= buyFireRateUpgradeCost
 	buyFireRateUpgradeCost *= 1.3
 	buyFireRateUpgradeCost = snapped(buyFireRateUpgradeCost, 1) 
+
+func buyHealth():
+	currentMoney -= 100

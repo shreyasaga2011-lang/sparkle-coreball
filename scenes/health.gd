@@ -3,6 +3,9 @@ extends Label
 
 var currentHealth = 5
 
+func healthAdd():
+	currentHealth += 1
+
 func healthTickHealth():
 	currentHealth -= 1 
 

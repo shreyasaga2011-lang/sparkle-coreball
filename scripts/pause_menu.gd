@@ -70,3 +70,12 @@ func _on_exploding_bullets_pressed() -> void:
 		exploding_bullets.text = "Explosion Shot (Cost: 1000)"
 	if permExpoBool == true:
 		upgrades.explosionUpgrade()
+
+@onready var healthNode: Label = $CanvasLayer/Health
+
+func _on_buy_health_pressed() -> void:
+	if KillTrackerNode.currentMoney <= 100:
+		pass
+	else:
+		upgrades.healthAdd()
+		KillTrackerNode.buyHealth()

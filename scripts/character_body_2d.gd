@@ -67,6 +67,7 @@ func player_movement(delta):
 @onready var healthNode: Label = $CanvasLayer/Health
 
 
+
 var health = 5
 
 func healthTick():
