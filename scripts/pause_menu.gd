@@ -52,11 +52,11 @@ func _on_upgrade_firerate_pressed() -> void:
 
 var exploBool = false
 var permExpoBool = false
+var counter = 0
 func _on_exploding_bullets_pressed() -> void:
-
-	if exploBool == true:
+	if exploBool == true && permExpoBool == true:
 		exploBool = false
-	else:
+	elif permExpoBool == true:
 		exploBool = true
 	if KillTrackerNode.currentMoney >= 1000 && permExpoBool != true:
 		KillTrackerNode.buyStuffExplodingBullets()
@@ -64,7 +64,9 @@ func _on_exploding_bullets_pressed() -> void:
 		permExpoBool = true
 	if exploBool == true:
 		exploding_bullets.text = "Explosion Shot EQUIPED"
-	else:
+	elif permExpoBool == true:
 		exploding_bullets.text = "Explosion Shot"
+	else:
+		exploding_bullets.text = "Explosion Shot (Cost: 1000)"
 	if permExpoBool == true:
 		upgrades.explosionUpgrade()

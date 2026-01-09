@@ -64,10 +64,14 @@ func player_movement(delta):
 		velocity = velocity.limit_length(SPEED)
 	move_and_slide()
 
-var health = 4
+@onready var healthNode: Label = $CanvasLayer/Health
+
+
+var health = 5
 
 func healthTick():
 	health -= 1
+	healthNode.healthTickHealth()
 	
 	if(health == 0):
 		queue_free()

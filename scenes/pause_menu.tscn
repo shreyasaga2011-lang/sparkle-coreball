@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://fu80srfvxmts"]
+[gd_scene load_steps=9 format=3 uid="uid://fu80srfvxmts"]
 
 [ext_resource type="Script" uid="uid://bsghm50endro1" path="res://scripts/pause_menu.gd" id="1_myx47"]
 [ext_resource type="Shader" uid="uid://da0m5apgqew70" path="res://scenes/pause_menu.gdshader" id="1_n87rw"]
 [ext_resource type="Script" uid="uid://cobq8hgu5d6en" path="res://scenes/exploding_bullets.gd" id="3_kukqi"]
+[ext_resource type="Script" uid="uid://cwefen0j3sfvc" path="res://scripts/cash.gd" id="4_5d2l8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_myx47"]
 shader = ExtResource("1_n87rw")
@@ -172,6 +173,12 @@ text = "Upgrade Firerate (Cost: 100)"
 layout_mode = 2
 text = "Explosion Shot (Cost: 1000)"
 script = ExtResource("3_kukqi")
+
+[node name="Cash" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+script = ExtResource("4_5d2l8")
+
+[node name="Timer" type="Timer" parent="PanelContainer/VBoxContainer/Cash"]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

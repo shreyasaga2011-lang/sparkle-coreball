@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 KillTrackerNode="*res://kill_tracker_node.gd"
 upgrades="*res://upgrades.gd"
 PauseGlobal="*res://pause_global.gd"
+WaveTick="*res://wave_tick.gd"
 
 [editor_plugins]
 

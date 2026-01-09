@@ -6,7 +6,7 @@ var can_take_damage = true # Toggle for damage ticks
 @onready var kill_tracker = get_tree().get_first_node_in_group("kill_tracker")
 @onready var player = get_tree().get_first_node_in_group("player")
 
-@export var speed := 120.0
+@export var speed := 200.0
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("bullets") or area.is_in_group("explosion"):
@@ -28,7 +28,7 @@ func healthTick():
 func apply_damage_tick_cooldown():
 	can_take_damage = false
 	# Flash red to show they got hit
-	modulate = Color.RED
+	modulate = Color.DARK_RED
 	
 	await get_tree().create_timer(0.2).timeout
 	

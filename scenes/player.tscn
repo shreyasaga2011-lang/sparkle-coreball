@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://be8qbmt0fe144"]
+[gd_scene load_steps=10 format=3 uid="uid://be8qbmt0fe144"]
 
 [ext_resource type="Script" uid="uid://bss4mgihbqfdc" path="res://scripts/character_body_2d.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://brs8bjhtxt7ub" path="res://assets/doubleGunPerson-export.png" id="2_g2els"]
 [ext_resource type="Script" uid="uid://ckbps7rhuxxgg" path="res://scripts/kill_tracker.gd" id="3_dqkch"]
 [ext_resource type="Script" uid="uid://c4v7ctfgjictu" path="res://scripts/area_2d.gd" id="3_qhqgy"]
 [ext_resource type="Script" uid="uid://cckdeo4g822as" path="res://scripts/score_tracker.gd" id="5_qlg0r"]
+[ext_resource type="Script" uid="uid://ylrw68e1lorp" path="res://scenes/health.gd" id="6_tuyoq"]
+[ext_resource type="Script" uid="uid://coxstj5fkg1wy" path="res://scripts/wave_count.gd" id="7_fjrip"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g2els"]
 radius = 56.0
@@ -57,22 +59,40 @@ shape = SubResource("CircleShape2D_qhqgy")
 [node name="KillTracker" type="Label" parent="CanvasLayer" groups=["kill_tracker"]]
 texture_filter = 1
 offset_left = 1966.0
-offset_top = 78.0
+offset_top = 47.0
 offset_right = 2130.2856
-offset_bottom = 294.0
-theme_override_colors/font_color = Color(0, 1, 1, 1)
+offset_bottom = 263.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
 script = ExtResource("3_dqkch")
 
 [node name="MoneyTracker" type="Label" parent="CanvasLayer" groups=["kill_tracker"]]
 texture_filter = 1
-offset_left = 1966.0
-offset_top = 210.0
-offset_right = 2130.2856
-offset_bottom = 426.0
-theme_override_colors/font_color = Color(0, 1, 1, 1)
+offset_left = 1968.0
+offset_top = 147.0
+offset_right = 2132.2856
+offset_bottom = 363.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
 script = ExtResource("5_qlg0r")
+
+[node name="Health" type="Label" parent="CanvasLayer"]
+offset_left = 1967.0
+offset_top = 248.0
+offset_right = 2242.0
+offset_bottom = 381.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+script = ExtResource("6_tuyoq")
+
+[node name="WaveCount" type="Label" parent="CanvasLayer"]
+offset_left = 1967.0
+offset_top = 353.0
+offset_right = 2242.0
+offset_bottom = 486.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+script = ExtResource("7_fjrip")
 
 [node name="Timer" type="Timer" parent="."]
 

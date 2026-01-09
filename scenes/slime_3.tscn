@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://b085p02sut2cp"]
+[gd_scene load_steps=4 format=3 uid="uid://c16ftwluixct0"]
 
-[ext_resource type="Script" uid="uid://6d0kbaq8xyke" path="res://scripts/slime_1.gd" id="1_s31t4"]
-[ext_resource type="Texture2D" uid="uid://bdjges6lggnb7" path="res://assets/normalSlime-export.png" id="2_s31t4"]
+[ext_resource type="Script" uid="uid://6d0kbaq8xyke" path="res://scripts/slime_1.gd" id="1_5p3y8"]
+[ext_resource type="Texture2D" uid="uid://d3i16q6nbl18b" path="res://assets/slime1.png" id="2_nwie8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s31t4"]
 radius = 50.0
@@ -9,12 +9,12 @@ radius = 50.0
 [node name="slime1" type="Area2D" groups=["enemy"]]
 collision_layer = 4
 collision_mask = 2
-script = ExtResource("1_s31t4")
+script = ExtResource("1_5p3y8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(3.91, 3.91)
-texture = ExtResource("2_s31t4")
+texture = ExtResource("2_nwie8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["enemy"]]
 light_mask = 2
