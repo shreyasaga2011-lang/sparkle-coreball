@@ -31,29 +31,40 @@ func _process(delta):
 	
 
 
-
+var currentCostFireRate = 115
 var fireUpgradeCount = 0
 func _on_upgrade_firerate_pressed() -> void:
 	if fireUpgradeCount < 6:
 		fireUpgradeCount += 1
+		if currentCostFireRate <= 1:
+			currentCostFireRate *= 1.3
+	if currentCostFireRate <= KillTrackerNode.currentMoney:
+		upgrade_firerate.text = "Upgrade Firerate  Cost: " + str(currentCostFireRate) + " (Current upgrades: "  + str(fireUpgradeCount) + ")"
+		currentCostFireRate = snapped(currentCostFireRate, 1) 
+		KillTrackerNode.buyFireRateUpgrade()
 		upgrades.upFirerate()
-		upgrade_firerate.text = "Upgrade Firerate (current upgrades: " + str(fireUpgradeCount) + ")"
+	elif currentCostFireRate > KillTrackerNode.currentMoney:
+		pass
 	else:
 		upgrade_firerate.text = "Upgrade Firerate (current upgrades: MAX)"
 
 
 
 var exploBool = false
-
+var permExpoBool = false
 func _on_exploding_bullets_pressed() -> void:
+
 	if exploBool == true:
 		exploBool = false
-	if KillTrackerNode.currentMoney >= 1000:
-		KillTrackerNode.buyStuffExplodingBullets()
-		upgrades.explosionUpgrade()
+	else:
 		exploBool = true
+	if KillTrackerNode.currentMoney >= 1000 && permExpoBool != true:
+		KillTrackerNode.buyStuffExplodingBullets()
+		exploBool = true
+		permExpoBool = true
 	if exploBool == true:
 		exploding_bullets.text = "Explosion Shot EQUIPED"
 	else:
 		exploding_bullets.text = "Explosion Shot"
-	PauseGlobal.buyingFlash()
+	if permExpoBool == true:
+		upgrades.explosionUpgrade()

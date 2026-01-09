@@ -14,3 +14,8 @@ func buyStuffExplodingBullets():
 		currentMoney -= 1000
 	else:
 		return
+var buyFireRateUpgradeCost = 100
+func buyFireRateUpgrade():
+	currentMoney -= buyFireRateUpgradeCost
+	buyFireRateUpgradeCost *= 1.3
+	buyFireRateUpgradeCost = snapped(buyFireRateUpgradeCost, 1) 
