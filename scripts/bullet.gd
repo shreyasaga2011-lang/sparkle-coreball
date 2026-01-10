@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var pierce := 30
+@export var pierce := 4
 
 var counter := 0
 @export var speed := 600.0

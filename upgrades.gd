@@ -36,7 +36,8 @@ signal force_blast_requested
 
 func healthTick():
 	currentHealth -= 1
-	emit_signal("force_blast_requested")
+	if forcefieldBool == true:
+		emit_signal("force_blast_requested")
 
 func healthAdd():
 	currentHealth += 1

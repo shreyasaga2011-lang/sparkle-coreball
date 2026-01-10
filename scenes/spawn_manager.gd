@@ -20,7 +20,7 @@ func _ready() -> void:
 	timer.timeout.connect(spawn_enemy)
 	timer.start()
 
-	await get_tree().create_timer(20.0).timeout
+	await get_tree().create_timer(40.0).timeout
 	timer.stop()
 
 	WaveTick.waveTickGlobal()
@@ -28,7 +28,7 @@ func _ready() -> void:
 	timer.timeout.connect(spawn_enemy_two)
 	timer.start()
 	
-	await get_tree().create_timer(25.0).timeout
+	await get_tree().create_timer(50.0).timeout
 	timer.stop()
 	
 	WaveTick.waveTickGlobal()
@@ -36,7 +36,7 @@ func _ready() -> void:
 	timer.timeout.connect(spawn_enemy_three)
 	timer.start()
 	
-	await get_tree().create_timer(25.0).timeout
+	await get_tree().create_timer(50.0).timeout
 	timer.stop()
 	
 	WaveTick.waveTickGlobal()
@@ -45,7 +45,7 @@ func _ready() -> void:
 	timer.timeout.connect(spawn_enemy_two)
 	timer.timeout.connect(spawn_enemy_three)
 	timer.start()
-	await get_tree().create_timer(25.0).timeout
+	await get_tree().create_timer(50.0).timeout
 	timer.stop()
 	
 	WaveTick.waveTickGlobal()

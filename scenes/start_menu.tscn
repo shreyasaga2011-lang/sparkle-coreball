@@ -7,10 +7,10 @@
 
 [node name="Button" type="Button" parent="."]
 texture_filter = 1
-offset_left = 966.0
-offset_top = 418.0
-offset_right = 1468.0
-offset_bottom = 555.0
+offset_left = 968.0
+offset_top = 520.0
+offset_right = 1470.0
+offset_bottom = 657.0
 theme_override_font_sizes/font_size = 32
 text = "Play
 "
@@ -18,13 +18,21 @@ script = ExtResource("1_ouf4f")
 
 [node name="Quit" type="Button" parent="."]
 texture_filter = 1
-offset_left = 962.0
-offset_top = 643.0
-offset_right = 1464.0
-offset_bottom = 780.0
+offset_left = 964.0
+offset_top = 745.0
+offset_right = 1466.0
+offset_bottom = 882.0
 theme_override_font_sizes/font_size = 32
 text = "Quit
 "
 script = ExtResource("2_thu50")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 1012.0
+offset_top = 342.0
+offset_right = 1437.0
+offset_bottom = 439.0
+theme_override_font_sizes/font_size = 64
+text = "SlimeSurvivor"
 
 [connection signal="pressed" from="Button" to="Button" method="_on_pressed"]

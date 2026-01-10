@@ -40,11 +40,11 @@ func _on_upgrade_firerate_pressed() -> void:
 		if currentCostFireRate <= KillTrackerNode.currentMoney:
 			if currentCostFireRate >= 1:
 				currentCostFireRate *= 1.3
+				fireUpgradeCount += 1
 				upgrade_firerate.text = "Upgrade Firerate  Cost: " + str(currentCostFireRate) + " (Current upgrades: "  + str(fireUpgradeCount) + ")"
 				currentCostFireRate = snapped(currentCostFireRate, 1) 
 				KillTrackerNode.buyFireRateUpgrade()
 				upgrades.upFirerate()
-				fireUpgradeCount += 1
 	if fireUpgradeCount >= 7:
 		upgrade_firerate.text = "Upgrade Firerate (current upgrades: MAX)"
 
@@ -98,13 +98,14 @@ func _on_move_speed_increase_pressed() -> void:
 		if currentCostMoveSpeed <= KillTrackerNode.currentMoney:
 			if currentCostMoveSpeed >= 1:
 				currentCostMoveSpeed *= 1.3
+				moveSpeedUpgradeCount += 1
 				$PanelContainer/VBoxContainer/MoveSpeedIncrease.text = \
 				"Upgrade Move Speed  Cost: " + str(currentCostMoveSpeed) + \
 				" (Current upgrades: " + str(moveSpeedUpgradeCount) + ")"
 				currentCostMoveSpeed = snapped(currentCostMoveSpeed, 1)
 				KillTrackerNode.buyMoveSpeedUpgrade()
 				upgrades.upMoveSpeed()
-				moveSpeedUpgradeCount += 1
+
 
 	if moveSpeedUpgradeCount >= 7:
 		$PanelContainer/VBoxContainer/MoveSpeedIncrease.text = \

@@ -1,6 +1,6 @@
 extends Area2D
 
-var health = 7
+var health = 4
 var can_take_damage = true # Toggle for damage ticks
 
 @onready var kill_tracker = get_tree().get_first_node_in_group("kill_tracker")
