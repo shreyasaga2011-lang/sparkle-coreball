@@ -8,10 +8,10 @@ var kills = 0
 func add_kill():
 	kills += 1
 
-var currentMoney = 5000
+var currentMoney = 10000
 
 func add_money():
-	currentMoney += 10
+	currentMoney += 30
 func buyStuffExplodingBullets():
 	if currentMoney >= 1000:
 		currentMoney -= 1000
@@ -21,7 +21,7 @@ var buyFireRateUpgradeCost = 100
 func buyFireRateUpgrade():
 	currentMoney -= buyFireRateUpgradeCost
 	buyFireRateUpgradeCost *= 1.3
-	buyFireRateUpgradeCost = snapped(buyFireRateUpgradeCost, 1) 
+	buyFireRateUpgradeCost = snapped(buyFireRateUpgradeCost, 1)
 
 func buyHealth():
 	currentMoney -= 100
@@ -29,3 +29,10 @@ func buyHealth():
 
 func buyForceField():
 	currentMoney -= 1000
+
+var buyMoveSpeedUpgradeCost = 100
+
+func buyMoveSpeedUpgrade():
+	currentMoney -= buyMoveSpeedUpgradeCost
+	buyMoveSpeedUpgradeCost *= 1.3
+	buyMoveSpeedUpgradeCost = snapped(buyMoveSpeedUpgradeCost, 1) 

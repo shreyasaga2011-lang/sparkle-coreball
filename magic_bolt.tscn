@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bx6jjp2wj8hv2"]
+
+[ext_resource type="Script" uid="uid://y5vq68weclje" path="res://scripts/magic_bolt.gd" id="1_lfm6t"]
+[ext_resource type="Texture2D" uid="uid://6k8eavoy0hqt" path="res://assets/MageSlimeBullet-export.png" id="2_x7gq7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lfm6t"]
+size = Vector2(8.700001, 3.1000004)
+
+[node name="MagicBolt" type="Area2D" groups=["enemy"]]
+texture_filter = 1
+scale = Vector2(5, 5)
+script = ExtResource("1_lfm6t")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_x7gq7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1.4901161e-08)
+scale = Vector2(0.99999976, 0.99999976)
+shape = SubResource("RectangleShape2D_lfm6t")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

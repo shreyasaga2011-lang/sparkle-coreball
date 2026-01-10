@@ -34,20 +34,19 @@ func _process(delta):
 
 var currentCostFireRate = 115
 var fireUpgradeCount = 0
+
 func _on_upgrade_firerate_pressed() -> void:
 	if fireUpgradeCount <= 7:
-		if currentCostFireRate >= 1:
-			currentCostFireRate *= 1.3
 		if currentCostFireRate <= KillTrackerNode.currentMoney:
-			upgrade_firerate.text = "Upgrade Firerate  Cost: " + str(currentCostFireRate) + " (Current upgrades: "  + str(fireUpgradeCount) + ")"
-			currentCostFireRate = snapped(currentCostFireRate, 1) 
-			KillTrackerNode.buyFireRateUpgrade()
-			upgrades.upFirerate()
-			fireUpgradeCount += 1
+			if currentCostFireRate >= 1:
+				currentCostFireRate *= 1.3
+				upgrade_firerate.text = "Upgrade Firerate  Cost: " + str(currentCostFireRate) + " (Current upgrades: "  + str(fireUpgradeCount) + ")"
+				currentCostFireRate = snapped(currentCostFireRate, 1) 
+				KillTrackerNode.buyFireRateUpgrade()
+				upgrades.upFirerate()
+				fireUpgradeCount += 1
 	if fireUpgradeCount >= 7:
 		upgrade_firerate.text = "Upgrade Firerate (current upgrades: MAX)"
-
-
 
 var exploBool = false
 var permExpoBool = false
@@ -70,7 +69,7 @@ func _on_exploding_bullets_pressed() -> void:
 	if permExpoBool == true:
 		upgrades.explosionUpgrade()
 
-@onready var healthNode: Label = $CanvasLayer/Health
+
 
 func _on_buy_health_pressed() -> void:
 	if KillTrackerNode.currentMoney <= 100:
@@ -90,3 +89,23 @@ func _on_forcefield_pressed() -> void:
 		KillTrackerNode.buyForceField()
 		forcefield.text = "Forcefield EQUIPPED"
 		
+
+var currentCostMoveSpeed = 120
+var moveSpeedUpgradeCount = 0
+
+func _on_move_speed_increase_pressed() -> void:
+	if moveSpeedUpgradeCount <= 7:
+		if currentCostMoveSpeed <= KillTrackerNode.currentMoney:
+			if currentCostMoveSpeed >= 1:
+				currentCostMoveSpeed *= 1.3
+				$PanelContainer/VBoxContainer/MoveSpeedIncrease.text = \
+				"Upgrade Move Speed  Cost: " + str(currentCostMoveSpeed) + \
+				" (Current upgrades: " + str(moveSpeedUpgradeCount) + ")"
+				currentCostMoveSpeed = snapped(currentCostMoveSpeed, 1)
+				KillTrackerNode.buyMoveSpeedUpgrade()
+				upgrades.upMoveSpeed()
+				moveSpeedUpgradeCount += 1
+
+	if moveSpeedUpgradeCount >= 7:
+		$PanelContainer/VBoxContainer/MoveSpeedIncrease.text = \
+			"Upgrade Move Speed (current upgrades: MAX)"

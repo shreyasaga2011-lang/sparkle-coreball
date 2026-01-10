@@ -49,6 +49,15 @@ func die():
 	if kill_tracker:
 		KillTrackerNode.add_kill()
 		KillTrackerNode.add_money()
+		KillTrackerNode.add_money()
+		KillTrackerNode.add_money()
+		KillTrackerNode.add_money()
+		KillTrackerNode.add_money()
+		KillTrackerNode.add_money()
+		KillTrackerNode.add_money()
+		KillTrackerNode.add_money()
+		KillTrackerNode.add_money()
+		KillTrackerNode.add_money()
 	queue_free()
 
 func _physics_process(delta: float) -> void:

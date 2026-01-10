@@ -18,3 +18,17 @@ func explosionUpgrade():
 var forcefieldBool = false
 func buyForceField():
 	forcefieldBool = true
+
+var currentSpeed = 400
+var dynamicSpeed = 100
+func upMoveSpeed():
+	currentSpeed += dynamicSpeed
+	dynamicSpeed *= 0.90
+
+
+var currentHealth = 5
+
+func healthTick():
+	currentHealth -= 1 
+func healthAdd():
+	currentHealth += 1

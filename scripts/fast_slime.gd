@@ -22,7 +22,7 @@ func healthTick():
 	# If we are in the "cooldown" period, ignore the damage
 	if not can_take_damage:
 		return
-
+	
 	health -= 1
 	
 	if health <= 0:

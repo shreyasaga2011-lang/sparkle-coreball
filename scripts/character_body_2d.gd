@@ -8,7 +8,7 @@ var bullet_scene = preload("res://scenes/bullet.tscn")
 
 var cooldown = true
 var big_bullet_upgrade = true
-const SPEED = 400.0
+var speed = 400.0
 const ACCEL = 1500
 const FRIC = 1400
 var firerate = 0.5
@@ -16,10 +16,11 @@ var firerate = 0.5
 var input = Vector2.ZERO
 
 func _physics_process(delta: float) -> void:
+	
 	player_movement(delta)
 	look_at(get_global_mouse_position())
-
-	if Input.is_action_just_pressed("shoot"):
+	speed = upgrades.currentSpeed
+	if Input.is_action_pressed("shoot"):
 		if cooldown == true:
 			if upgrades.explosionBool == false:
 				var bullet = bullet_scene.instantiate()
@@ -34,7 +35,7 @@ func _physics_process(delta: float) -> void:
 				await get_tree().create_timer(firerate * upgrades.multi).timeout
 				cooldown = true
 		
-	if Input.is_action_just_pressed("shoot"):
+	if Input.is_action_pressed("shoot"):
 		if cooldown == true:
 			if upgrades.explosionBool == true:
 				var bigBullet = big_bullet.instantiate()
@@ -61,19 +62,16 @@ func player_movement(delta):
 			velocity = Vector2.ZERO
 	else:
 		velocity += (input * ACCEL * delta)
-		velocity = velocity.limit_length(SPEED)
+		velocity = velocity.limit_length(speed)
 	move_and_slide()
 
 @onready var healthNode: Label = $CanvasLayer/Health
 
 
 
-var health = 5
-
 func healthTick():
-	health -= 1
-	healthNode.healthTickHealth()
-	
-	if(health == 0):
+	var health = upgrades.currentHealth
+	upgrades.healthTick()
+	if(health == 1):
 		queue_free()
 		get_tree().change_scene_to_file("res://scenes/deathscreen.tscn")

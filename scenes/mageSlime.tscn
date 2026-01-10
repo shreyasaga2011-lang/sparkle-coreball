@@ -1,20 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://dpoqe61iy5l7h"]
+[gd_scene load_steps=5 format=3 uid="uid://m21l8gk1dh7n"]
 
-[ext_resource type="Script" uid="uid://blurlt6kq13lo" path="res://scripts/ultra_speed_slime.gd" id="1_jri4v"]
-[ext_resource type="Texture2D" uid="uid://cjpxqfk2scr6q" path="res://assets/fastSlime-export.png" id="2_jri4v"]
+[ext_resource type="Script" uid="uid://dsuawt5o5fqmg" path="res://scripts/mage_slime.gd" id="1_xxj3p"]
+[ext_resource type="PackedScene" uid="uid://bx6jjp2wj8hv2" path="res://magic_bolt.tscn" id="2_qrngj"]
+[ext_resource type="Texture2D" uid="uid://chunedhcshj7r" path="res://assets/MageSlime-export.png" id="2_xxj3p"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s31t4"]
 radius = 50.0
 
-[node name="UltraSpeedSlime" type="Area2D" groups=["enemy"]]
+[node name="slime1" type="Area2D" groups=["enemy"]]
 collision_layer = 4
 collision_mask = 2
-script = ExtResource("1_jri4v")
+script = ExtResource("1_xxj3p")
+projectile_scene = ExtResource("2_qrngj")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(3.91, 3.91)
-texture = ExtResource("2_jri4v")
+texture = ExtResource("2_xxj3p")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["enemy"]]
 light_mask = 2

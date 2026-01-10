@@ -17,7 +17,7 @@ radius = 56.0
 radius = 58.034473
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ur7pv"]
-radius = 166.1079
+radius = 274.2857
 
 [node name="player" type="CharacterBody2D" groups=["player"]]
 scale = Vector2(0.7, 0.7)
@@ -101,7 +101,7 @@ script = ExtResource("7_fjrip")
 
 [node name="Timer" type="Timer" parent="."]
 
-[node name="forcefield" type="Area2D" parent="." groups=["forcefield"]]
+[node name="forcefield" type="Area2D" parent="."]
 position = Vector2(0, -1.4285713)
 collision_layer = 2
 collision_mask = 4
@@ -114,7 +114,7 @@ shape = SubResource("CircleShape2D_ur7pv")
 modulate = Color(1, 1, 1, 0.32156864)
 texture_filter = 1
 position = Vector2(1.4285717, 4.285714)
-scale = Vector2(13, 13)
+scale = Vector2(20, 20)
 texture = ExtResource("9_ur7pv")
 
 [connection signal="area_entered" from="detector" to="." method="_on_area_2d_area_entered"]
