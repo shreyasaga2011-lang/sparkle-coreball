@@ -1,4 +1,5 @@
 extends Node2D
+@export var enemy_scene_five: PackedScene
 @export var enemy_scene_four: PackedScene
 @export var enemy_scene_three: PackedScene
 @export var enemy_scene_two: PackedScene
@@ -52,6 +53,7 @@ func _ready() -> void:
 	timer.timeout.connect(spawn_enemy_two)
 	timer.timeout.connect(spawn_enemy_four)
 	timer.timeout.connect(spawn_enemy_three)
+	spawn_enemy_five()
 	timer.start()
 
 	
@@ -115,6 +117,21 @@ func spawn_enemy_four():
 	var pos = player.global_position + offset
 
 	var enemy = enemy_scene_four.instantiate()
+
+	enemy_container.add_child(enemy)
+	enemy.global_position = pos
+	
+func spawn_enemy_five():
+	if not is_instance_valid(player):
+		print("asd")
+		return
+
+	var angle = randf() * TAU
+	var distance = sqrt(randf()) * spawn_radius + 1000       
+	var offset = Vector2(cos(angle), sin(angle)) * distance
+	var pos = player.global_position + offset
+
+	var enemy = enemy_scene_five.instantiate()
 
 	enemy_container.add_child(enemy)
 	enemy.global_position = pos

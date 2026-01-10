@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://be8qbmt0fe144"]
+[gd_scene load_steps=13 format=3 uid="uid://be8qbmt0fe144"]
 
 [ext_resource type="Script" uid="uid://bss4mgihbqfdc" path="res://scripts/character_body_2d.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://brs8bjhtxt7ub" path="res://assets/doubleGunPerson-export.png" id="2_g2els"]
@@ -7,12 +7,17 @@
 [ext_resource type="Script" uid="uid://cckdeo4g822as" path="res://scripts/score_tracker.gd" id="5_qlg0r"]
 [ext_resource type="Script" uid="uid://ylrw68e1lorp" path="res://scenes/health.gd" id="6_tuyoq"]
 [ext_resource type="Script" uid="uid://coxstj5fkg1wy" path="res://scripts/wave_count.gd" id="7_fjrip"]
+[ext_resource type="Script" uid="uid://6tcx7cmslngs" path="res://scenes/forcefield.gd" id="8_smehm"]
+[ext_resource type="Texture2D" uid="uid://cb4g28fhglxxl" path="res://assets/circle.svg" id="9_ur7pv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g2els"]
 radius = 56.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qhqgy"]
 radius = 58.034473
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ur7pv"]
+radius = 166.1079
 
 [node name="player" type="CharacterBody2D" groups=["player"]]
 scale = Vector2(0.7, 0.7)
@@ -95,6 +100,22 @@ theme_override_font_sizes/font_size = 32
 script = ExtResource("7_fjrip")
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="forcefield" type="Area2D" parent="." groups=["forcefield"]]
+position = Vector2(0, -1.4285713)
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("8_smehm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="forcefield"]
+shape = SubResource("CircleShape2D_ur7pv")
+
+[node name="Sprite2D" type="Sprite2D" parent="forcefield"]
+modulate = Color(1, 1, 1, 0.32156864)
+texture_filter = 1
+position = Vector2(1.4285717, 4.285714)
+scale = Vector2(13, 13)
+texture = ExtResource("9_ur7pv")
 
 [connection signal="area_entered" from="detector" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_entered" from="detector" to="detector" method="_on_area_entered"]

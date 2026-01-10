@@ -1,13 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://bvgdaekc0nfey"]
+[gd_scene load_steps=7 format=3 uid="uid://bvgdaekc0nfey"]
 
 [ext_resource type="Script" uid="uid://bad6e8urgfarh" path="res://scenes/spawn_manager.gd" id="1_ltx4y"]
 [ext_resource type="PackedScene" uid="uid://b085p02sut2cp" path="res://scenes/slime_1.tscn" id="2_2f4nx"]
 [ext_resource type="PackedScene" uid="uid://2m1ye165xuxf" path="res://scenes/fastSlime.tscn" id="2_2syu8"]
 [ext_resource type="PackedScene" uid="uid://c16ftwluixct0" path="res://scenes/tankslime.tscn" id="2_3sj15"]
 [ext_resource type="PackedScene" uid="uid://dpoqe61iy5l7h" path="res://scenes/UltraSpeedSlime.tscn" id="2_7bao8"]
+[ext_resource type="PackedScene" uid="uid://cyxeh4anthmvt" path="res://scenes/BossSlime.tscn" id="2_cacyu"]
 
 [node name="SpawnManager" type="Node2D"]
 script = ExtResource("1_ltx4y")
+enemy_scene_five = ExtResource("2_cacyu")
 enemy_scene_four = ExtResource("2_7bao8")
 enemy_scene_three = ExtResource("2_3sj15")
 enemy_scene_two = ExtResource("2_2syu8")

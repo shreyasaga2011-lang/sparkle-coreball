@@ -8,7 +8,7 @@ var kills = 0
 func add_kill():
 	kills += 1
 
-var currentMoney = 1000
+var currentMoney = 5000
 
 func add_money():
 	currentMoney += 10
@@ -25,3 +25,7 @@ func buyFireRateUpgrade():
 
 func buyHealth():
 	currentMoney -= 100
+
+
+func buyForceField():
+	currentMoney -= 1000

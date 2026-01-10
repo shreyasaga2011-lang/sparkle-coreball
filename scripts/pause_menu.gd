@@ -2,7 +2,8 @@ extends Control
 @onready var resume_button: Button = $PanelContainer/ResumeButton
 @onready var upgrade_firerate: Button = $PanelContainer/VBoxContainer/UpgradeFirerate
 @onready var exploding_bullets: Button = $PanelContainer/VBoxContainer/ExplodingBullets
-
+@onready var buy_health: Button = $PanelContainer/VBoxContainer/BuyHealth
+@onready var forcefield: Button = $PanelContainer/VBoxContainer/Forcefield
 
 func resume():
 	$AnimationPlayer.play_backwards("blur")
@@ -34,18 +35,16 @@ func _process(delta):
 var currentCostFireRate = 115
 var fireUpgradeCount = 0
 func _on_upgrade_firerate_pressed() -> void:
-	if fireUpgradeCount < 6:
-		fireUpgradeCount += 1
-		if currentCostFireRate <= 1:
+	if fireUpgradeCount <= 7:
+		if currentCostFireRate >= 1:
 			currentCostFireRate *= 1.3
-	if currentCostFireRate <= KillTrackerNode.currentMoney:
-		upgrade_firerate.text = "Upgrade Firerate  Cost: " + str(currentCostFireRate) + " (Current upgrades: "  + str(fireUpgradeCount) + ")"
-		currentCostFireRate = snapped(currentCostFireRate, 1) 
-		KillTrackerNode.buyFireRateUpgrade()
-		upgrades.upFirerate()
-	elif currentCostFireRate > KillTrackerNode.currentMoney:
-		pass
-	else:
+		if currentCostFireRate <= KillTrackerNode.currentMoney:
+			upgrade_firerate.text = "Upgrade Firerate  Cost: " + str(currentCostFireRate) + " (Current upgrades: "  + str(fireUpgradeCount) + ")"
+			currentCostFireRate = snapped(currentCostFireRate, 1) 
+			KillTrackerNode.buyFireRateUpgrade()
+			upgrades.upFirerate()
+			fireUpgradeCount += 1
+	if fireUpgradeCount >= 7:
 		upgrade_firerate.text = "Upgrade Firerate (current upgrades: MAX)"
 
 
@@ -79,3 +78,15 @@ func _on_buy_health_pressed() -> void:
 	else:
 		upgrades.healthAdd()
 		KillTrackerNode.buyHealth()
+
+
+
+
+func _on_forcefield_pressed() -> void:
+	if KillTrackerNode.currentMoney <= 1000:
+		pass
+	else:
+		upgrades.buyForceField()
+		KillTrackerNode.buyForceField()
+		forcefield.text = "Forcefield EQUIPPED"
+		

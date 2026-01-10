@@ -1,8 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://fu80srfvxmts"]
+[gd_scene load_steps=8 format=3 uid="uid://fu80srfvxmts"]
 
 [ext_resource type="Script" uid="uid://bsghm50endro1" path="res://scripts/pause_menu.gd" id="1_myx47"]
 [ext_resource type="Shader" uid="uid://da0m5apgqew70" path="res://scenes/pause_menu.gdshader" id="1_n87rw"]
-[ext_resource type="Script" uid="uid://cobq8hgu5d6en" path="res://scenes/exploding_bullets.gd" id="3_kukqi"]
 [ext_resource type="Script" uid="uid://cwefen0j3sfvc" path="res://scripts/cash.gd" id="4_5d2l8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_myx47"]
@@ -165,18 +164,21 @@ layout_mode = 2
 layout_mode = 2
 text = "Resume"
 
+[node name="Forcefield" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Forcefield  (Cost: 1000)"
+
 [node name="UpgradeFirerate" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 text = "Upgrade Firerate (Cost: 100)"
 
-[node name="ExplodingBullets" type="Button" parent="PanelContainer/VBoxContainer"]
-layout_mode = 2
-text = "Explosion Shot (Cost: 1000)"
-script = ExtResource("3_kukqi")
-
 [node name="BuyHealth" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 text = "Buy Health (Cost: 100)"
+
+[node name="ExplodingBullets" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Explosion Shot (Cost: 1000)"
 
 [node name="Cash" type="Label" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
@@ -190,6 +192,7 @@ libraries = {
 }
 
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Forcefield" to="." method="_on_forcefield_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/UpgradeFirerate" to="." method="_on_upgrade_firerate_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/ExplodingBullets" to="." method="_on_exploding_bullets_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/BuyHealth" to="." method="_on_buy_health_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/ExplodingBullets" to="." method="_on_exploding_bullets_pressed"]

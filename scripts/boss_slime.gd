@@ -1,16 +1,16 @@
 extends Area2D
 
-var health = 4
+var health = 150
 var can_take_damage = true # Toggle for damage ticks
 
 @onready var kill_tracker = get_tree().get_first_node_in_group("kill_tracker")
 @onready var player = get_tree().get_first_node_in_group("player")
-
-@export var speed := 200.0
+@onready var healthbar: Label = $Healthbar
+@export var speed := 150.0
 @export var forcefield_damage_interval := 0.3
+
 var in_forcefield = false
 var forcefield_timer = 0.0
-
 
 
 func _on_area_entered(area: Area2D) -> void:
@@ -18,11 +18,12 @@ func _on_area_entered(area: Area2D) -> void:
 		healthTick()
 	if area.is_in_group("forcefield"):
 		in_forcefield = true
+		
 func healthTick():
 	# If we are in the "cooldown" period, ignore the damage
 	if not can_take_damage:
 		return
-
+	healthbar.healthTickBar()
 	health -= 1
 	
 	if health <= 0:
@@ -34,9 +35,9 @@ func healthTick():
 func apply_damage_tick_cooldown():
 	can_take_damage = false
 	# Flash red to show they got hit
-	modulate = Color.DARK_RED
+	modulate = Color.RED
 	
-	await get_tree().create_timer(0.2).timeout
+	await get_tree().create_timer(0.15).timeout
 	
 	can_take_damage = true
 	modulate = Color.WHITE # Return to normal

@@ -14,3 +14,7 @@ func explosionUpgrade():
 		explosionBool = true
 	else:
 		explosionBool = false
+
+var forcefieldBool = false
+func buyForceField():
+	forcefieldBool = true

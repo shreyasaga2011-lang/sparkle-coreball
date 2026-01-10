@@ -5,13 +5,22 @@ var can_take_damage = true # Toggle for damage ticks
 
 @onready var kill_tracker = get_tree().get_first_node_in_group("kill_tracker")
 @onready var player = get_tree().get_first_node_in_group("player")
-
+@export var forcefield_damage_interval := 0.3
 @export var speed := 120.0
+var in_forcefield = false
+var forcefield_timer = 0.0
+
+func _on_area_exited(area: Area2D) -> void:
+	if area.is_in_group("forcefield"):
+		in_forcefield = false
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("bullets") or area.is_in_group("explosion"):
 		healthTick()
-		
+	if area.is_in_group("forcefield"):
+		in_forcefield = true
+
+
 func healthTick():
 	# If we are in the "cooldown" period, ignore the damage
 	if not can_take_damage:
@@ -48,3 +57,12 @@ func _physics_process(delta: float) -> void:
 	if player:
 		var direction = (player.global_position - global_position).normalized()
 		global_position += direction * speed * delta
+		
+	if in_forcefield:
+		forcefield_timer += delta
+		if forcefield_timer >= forcefield_damage_interval:
+			healthTick()
+			forcefield_timer = 0.0
+	else:
+		forcefield_timer = 0.0
+	

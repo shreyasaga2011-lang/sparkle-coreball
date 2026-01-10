@@ -32,6 +32,7 @@ bullets=""
 enemy=""
 kill_tracker=""
 player=""
+forcefield=""
 
 [input]
 

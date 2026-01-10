@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://cyxeh4anthmvt"]
+
+[ext_resource type="Script" uid="uid://de7wowroa3fha" path="res://scripts/boss_slime.gd" id="1_fqdtx"]
+[ext_resource type="Texture2D" uid="uid://dle7a8ukuw7rp" path="res://assets/TankSlime-export.png" id="2_l8th3"]
+[ext_resource type="Script" uid="uid://b3qdc8hgq71wi" path="res://scripts/healthbar.gd" id="3_l8th3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s31t4"]
+radius = 56.535378
+
+[node name="BossSlime" type="Area2D" groups=["enemy"]]
+scale = Vector2(4, 4)
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_fqdtx")
+speed = null
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-0.25001526, 0.99998474)
+scale = Vector2(3.91, 3.91)
+texture = ExtResource("2_l8th3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["enemy"]]
+light_mask = 2
+visibility_layer = 4
+position = Vector2(-0.5, 0.25)
+scale = Vector2(1.0000001, 1.0000001)
+shape = SubResource("CircleShape2D_s31t4")
+
+[node name="Healthbar" type="Label" parent="."]
+texture_filter = 1
+offset_left = -34.0
+offset_top = -83.75
+offset_right = 6.0
+offset_bottom = -60.75
+script = ExtResource("3_l8th3")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
