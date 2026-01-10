@@ -56,7 +56,7 @@ func _ready() -> void:
 	timer.timeout.connect(spawn_enemy_three)
 	spawn_enemy_five()
 	timer.start()
-	await get_tree().create_timer(25.0).timeout
+	await get_tree().create_timer(50.0).timeout
 	timer.stop()
 	
 	WaveTick.waveTickGlobal()

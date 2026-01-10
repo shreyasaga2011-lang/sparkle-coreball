@@ -1,6 +1,7 @@
 extends Area2D
 
-@export var pierce := 2
+@export var pierce := 30
+
 var counter := 0
 @export var speed := 600.0
 var direction := Vector2.ZERO

@@ -10,6 +10,8 @@ var can_take_damage = true # Toggle for damage ticks
 var in_forcefield = false
 var forcefield_timer = 0.0
 
+
+
 func _on_area_exited(area: Area2D) -> void:
 	if area.is_in_group("forcefield"):
 		in_forcefield = false
@@ -19,6 +21,8 @@ func _on_area_entered(area: Area2D) -> void:
 		healthTick()
 	if area.is_in_group("forcefield"):
 		in_forcefield = true
+	if area.is_in_group("forceblast"):
+		healthTick()
 
 
 func healthTick():
@@ -65,4 +69,3 @@ func _physics_process(delta: float) -> void:
 			forcefield_timer = 0.0
 	else:
 		forcefield_timer = 0.0
-	

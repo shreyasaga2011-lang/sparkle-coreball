@@ -1,0 +1,69 @@
+[gd_scene load_steps=7 format=3 uid="uid://bwsjs6mc5xpri"]
+
+[ext_resource type="Script" uid="uid://dccbtkyij83aw" path="res://scripts/bullet.gd" id="1_k18gy"]
+[ext_resource type="Texture2D" uid="uid://dprchrlwugxn1" path="res://assets/shuriken.png" id="2_k18gy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h1aey"]
+radius = 37.48333
+
+[sub_resource type="Animation" id="Animation_k18gy"]
+resource_name = "new_animation"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.2831855]
+}
+
+[sub_resource type="Animation" id="Animation_0rvwh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jr3c8"]
+_data = {
+&"RESET": SubResource("Animation_0rvwh"),
+&"new_animation": SubResource("Animation_k18gy")
+}
+
+[node name="bullet" type="Area2D" groups=["bullets"]]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_k18gy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-2, 7.0000005)
+scale = Vector2(4.609375, 4.3125)
+texture = ExtResource("2_k18gy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 4
+visibility_layer = 2
+position = Vector2(-2, 9)
+shape = SubResource("CircleShape2D_h1aey")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_jr3c8")
+}
+autoplay = "new_animation"
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

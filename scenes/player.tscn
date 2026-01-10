@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://be8qbmt0fe144"]
+[gd_scene load_steps=20 format=3 uid="uid://be8qbmt0fe144"]
 
 [ext_resource type="Script" uid="uid://bss4mgihbqfdc" path="res://scripts/character_body_2d.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://brs8bjhtxt7ub" path="res://assets/doubleGunPerson-export.png" id="2_g2els"]
@@ -8,7 +8,11 @@
 [ext_resource type="Script" uid="uid://ylrw68e1lorp" path="res://scenes/health.gd" id="6_tuyoq"]
 [ext_resource type="Script" uid="uid://coxstj5fkg1wy" path="res://scripts/wave_count.gd" id="7_fjrip"]
 [ext_resource type="Script" uid="uid://6tcx7cmslngs" path="res://scenes/forcefield.gd" id="8_smehm"]
+[ext_resource type="Script" uid="uid://cgd6wprn8tyl8" path="res://scripts/ability_list.gd" id="8_y4r1p"]
+[ext_resource type="Script" uid="uid://nyqv48bc2047" path="res://scripts/shuriken.gd" id="9_d2wvv"]
 [ext_resource type="Texture2D" uid="uid://cb4g28fhglxxl" path="res://assets/circle.svg" id="9_ur7pv"]
+[ext_resource type="Script" uid="uid://bg31ev3j128nr" path="res://scripts/force_blast.gd" id="12_3v2ag"]
+[ext_resource type="Texture2D" uid="uid://dtcfrqje53mdc" path="res://assets/forceBlast-export.png" id="13_jej6c"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g2els"]
 radius = 56.0
@@ -17,7 +21,92 @@ radius = 56.0
 radius = 58.034473
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ur7pv"]
-radius = 274.2857
+radius = 461.57007
+
+[sub_resource type="Animation" id="Animation_jej6c"]
+resource_name = "forceblastAnim"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.53333336),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.1, 0.1), Vector2(2, 2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.56666666),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(20, 20)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.56666666),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.96862745), Color(1, 1, 1, 0.15294118)]
+}
+
+[sub_resource type="Animation" id="Animation_f1ej7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(20, 20)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.15294118)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oprun"]
+_data = {
+&"RESET": SubResource("Animation_f1ej7"),
+&"forceblastAnim": SubResource("Animation_jej6c")
+}
 
 [node name="player" type="CharacterBody2D" groups=["player"]]
 scale = Vector2(0.7, 0.7)
@@ -99,6 +188,26 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 32
 script = ExtResource("7_fjrip")
 
+[node name="AbilityList" type="Label" parent="CanvasLayer"]
+offset_left = 86.0
+offset_top = 935.0
+offset_right = 262.0
+offset_bottom = 1028.0
+theme_override_font_sizes/font_size = 32
+text = "Abilities
+"
+script = ExtResource("8_y4r1p")
+
+[node name="Shuriken" type="Label" parent="CanvasLayer"]
+offset_left = 93.0
+offset_top = 1041.0
+offset_right = 269.0
+offset_bottom = 1134.0
+theme_override_font_sizes/font_size = 32
+text = "Abilities
+"
+script = ExtResource("9_d2wvv")
+
 [node name="Timer" type="Timer" parent="."]
 
 [node name="forcefield" type="Area2D" parent="."]
@@ -116,6 +225,27 @@ texture_filter = 1
 position = Vector2(1.4285717, 4.285714)
 scale = Vector2(20, 20)
 texture = ExtResource("9_ur7pv")
+
+[node name="forceBlast" type="Area2D" parent="."]
+position = Vector2(0, -1.4285713)
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("12_3v2ag")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="forceBlast" groups=["forceblast"]]
+shape = SubResource("CircleShape2D_ur7pv")
+
+[node name="Sprite2D" type="Sprite2D" parent="forceBlast"]
+modulate = Color(1, 1, 1, 0.15294118)
+texture_filter = 1
+position = Vector2(1.4285717, 4.285714)
+scale = Vector2(20, 20)
+texture = ExtResource("13_jej6c")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="forceBlast"]
+libraries = {
+&"": SubResource("AnimationLibrary_oprun")
+}
 
 [connection signal="area_entered" from="detector" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_entered" from="detector" to="detector" method="_on_area_entered"]

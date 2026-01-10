@@ -18,6 +18,10 @@ func explosionUpgrade():
 var forcefieldBool = false
 func buyForceField():
 	forcefieldBool = true
+var forceBlast = false
+
+func buyForceBlast():
+	forceBlast = true
 
 var currentSpeed = 400
 var dynamicSpeed = 100
@@ -28,7 +32,32 @@ func upMoveSpeed():
 
 var currentHealth = 5
 
+signal force_blast_requested
+
 func healthTick():
-	currentHealth -= 1 
+	currentHealth -= 1
+	emit_signal("force_blast_requested")
+
 func healthAdd():
 	currentHealth += 1
+var shurikenBool = false
+
+func buyShuriken():
+	shurikenBool = true
+
+
+var shurikenGlobalCooldown := 1.0
+var cooldown_timer: SceneTreeTimer = null
+var shuriken_on_cooldown := false
+
+func start_shuriken_cooldown():
+	if shuriken_on_cooldown:
+		return
+
+	shuriken_on_cooldown = true
+	cooldown_timer = get_tree().create_timer(shurikenGlobalCooldown)
+
+	await cooldown_timer.timeout
+
+	cooldown_timer = null
+	shuriken_on_cooldown = false

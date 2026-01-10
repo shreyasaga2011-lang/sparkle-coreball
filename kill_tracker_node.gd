@@ -36,3 +36,8 @@ func buyMoveSpeedUpgrade():
 	currentMoney -= buyMoveSpeedUpgradeCost
 	buyMoveSpeedUpgradeCost *= 1.3
 	buyMoveSpeedUpgradeCost = snapped(buyMoveSpeedUpgradeCost, 1) 
+func buyShuriken():
+	currentMoney -= 700
+
+func buyForceBlast():
+	currentMoney -= 1000

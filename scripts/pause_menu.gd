@@ -109,3 +109,29 @@ func _on_move_speed_increase_pressed() -> void:
 	if moveSpeedUpgradeCount >= 7:
 		$PanelContainer/VBoxContainer/MoveSpeedIncrease.text = \
 			"Upgrade Move Speed (current upgrades: MAX)"
+
+
+@onready var shuriken: Button = $PanelContainer/VBoxContainer/Shuriken
+
+var permShuriken = false
+
+func _on_shuriken_pressed() -> void:
+	if permShuriken == false:
+		if KillTrackerNode.currentMoney >= 1000:
+			KillTrackerNode.buyShuriken()
+			upgrades.buyShuriken()
+			permShuriken = true
+			shuriken.text = "Shuriken EQUIPPED (q or RMB)"
+			
+
+var permForceBlast = false
+
+@onready var force_blast: Button = $PanelContainer/VBoxContainer/ForceBlast
+
+func _on_force_blast_pressed() -> void:
+	if permForceBlast == false:
+		if KillTrackerNode.currentMoney >= 1000:
+			KillTrackerNode.buyForceBlast()
+			upgrades.buyForceBlast()
+			permForceBlast = true
+			force_blast.text = "ForceBlast EQUIPPED (AUTO Fires Whenever Damage Received)"

@@ -1,6 +1,7 @@
 extends CharacterBody2D
 var big_bullet = preload("res://scenes/big_bullet.tscn")
 var bullet_scene = preload("res://scenes/bullet.tscn")
+var shuriken = preload("uid://bwsjs6mc5xpri")
 @onready var shooty_part: Node2D = $ShootyPart
 @onready var shooty_part_two: Node2D = $ShootyPartTwo
 @onready var detector: Area2D = $detector
@@ -14,6 +15,8 @@ const FRIC = 1400
 var firerate = 0.5
 
 var input = Vector2.ZERO
+var shurikenCooldown = true
+var shurikenGlobalCooldown = 1
 
 func _physics_process(delta: float) -> void:
 	
@@ -46,6 +49,14 @@ func _physics_process(delta: float) -> void:
 				await get_tree().create_timer(firerate * upgrades.multi).timeout
 				cooldown = true
 
+	if Input.is_action_just_pressed("shuriken"):
+		if upgrades.shurikenBool and not upgrades.shuriken_on_cooldown:
+			var s = shuriken.instantiate()
+			s.global_position = explosive_shooty.global_position
+			s.direction = (get_global_mouse_position() - global_position).normalized()
+			get_parent().add_child(s)
+			upgrades.start_shuriken_cooldown()
+
 func get_input():
 	input.x = int(Input.is_action_pressed("right")) - int(Input.is_action_pressed("left"))
 	input.y = int(Input.is_action_pressed("down")) - int(Input.is_action_pressed("up"))
@@ -68,7 +79,16 @@ func player_movement(delta):
 @onready var healthNode: Label = $CanvasLayer/Health
 
 
+@onready var force_blast: Area2D = $forceBlast
 
+
+func _ready():
+	upgrades.force_blast_requested.connect(_on_force_blast_requested)
+
+func _on_force_blast_requested():
+	force_blast.blast()
+	
+	
 func healthTick():
 	var health = upgrades.currentHealth
 	upgrades.healthTick()

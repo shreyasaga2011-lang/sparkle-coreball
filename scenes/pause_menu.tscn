@@ -173,10 +173,6 @@ text = "Buy Health (Cost: 100)"
 layout_mode = 2
 text = "Upgrade Firerate (Cost: 100)"
 
-[node name="Forcefield" type="Button" parent="PanelContainer/VBoxContainer"]
-layout_mode = 2
-text = "Forcefield  (Cost: 1000)"
-
 [node name="ExplodingBullets" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 text = "Explosion Shot (Cost: 1000)"
@@ -184,6 +180,18 @@ text = "Explosion Shot (Cost: 1000)"
 [node name="MoveSpeedIncrease" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 text = "Increase Movespeed"
+
+[node name="Shuriken" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Shuriken (Cost: 1000)"
+
+[node name="Forcefield" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Forcefield  (Cost: 1000)"
+
+[node name="ForceBlast" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "ForceBlast  (Cost: 1000)"
 
 [node name="Cash" type="Label" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
@@ -199,6 +207,8 @@ libraries = {
 [connection signal="pressed" from="PanelContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/BuyHealth" to="." method="_on_buy_health_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/UpgradeFirerate" to="." method="_on_upgrade_firerate_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/Forcefield" to="." method="_on_forcefield_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/ExplodingBullets" to="." method="_on_exploding_bullets_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/MoveSpeedIncrease" to="." method="_on_move_speed_increase_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Shuriken" to="." method="_on_shuriken_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Forcefield" to="." method="_on_forcefield_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/ForceBlast" to="." method="_on_force_blast_pressed"]
