@@ -1,4 +1,5 @@
 extends Area2D
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 var health = 4
 var can_take_damage = true # Toggle for damage ticks
@@ -80,7 +81,12 @@ func _physics_process(delta: float) -> void:
 			forcefield_timer = 0.0
 	else:
 		forcefield_timer = 0.0
-	
+	var direction: Vector2 = (player.global_position - global_position).normalized()
+
+	if direction.x > 0:
+		animated_sprite_2d.flip_h = true
+	elif direction.x < 0:
+		animated_sprite_2d.flip_h = false
 func shootMagic():
 	if projectile_scene:
 		var bullet = projectile_scene.instantiate()

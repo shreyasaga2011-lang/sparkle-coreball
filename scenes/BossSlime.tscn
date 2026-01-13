@@ -1,8 +1,30 @@
-[gd_scene load_steps=5 format=3 uid="uid://cyxeh4anthmvt"]
+[gd_scene load_steps=8 format=3 uid="uid://cyxeh4anthmvt"]
 
 [ext_resource type="Script" uid="uid://de7wowroa3fha" path="res://scripts/boss_slime.gd" id="1_fqdtx"]
-[ext_resource type="Texture2D" uid="uid://dle7a8ukuw7rp" path="res://assets/TankSlime-export.png" id="2_l8th3"]
+[ext_resource type="Texture2D" uid="uid://5wjmaw7aup6b" path="res://assets/boss_slime.png" id="2_l8th3"]
 [ext_resource type="Script" uid="uid://b3qdc8hgq71wi" path="res://scripts/healthbar.gd" id="3_l8th3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ocia"]
+atlas = ExtResource("2_l8th3")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aet4s"]
+atlas = ExtResource("2_l8th3")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jdw73"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ocia")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aet4s")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s31t4"]
 radius = 56.535378
@@ -13,11 +35,12 @@ collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_fqdtx")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(-0.25001526, 0.99998474)
-scale = Vector2(3.91, 3.91)
-texture = ExtResource("2_l8th3")
+scale = Vector2(3.3, 3.3)
+sprite_frames = SubResource("SpriteFrames_jdw73")
+autoplay = "default"
+frame_progress = 0.14572726
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["enemy"]]
 light_mask = 2

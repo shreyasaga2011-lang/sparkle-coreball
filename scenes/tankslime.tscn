@@ -1,7 +1,29 @@
-[gd_scene load_steps=4 format=3 uid="uid://c16ftwluixct0"]
+[gd_scene load_steps=7 format=3 uid="uid://c16ftwluixct0"]
 
 [ext_resource type="Script" uid="uid://d3xarl3ndaq27" path="res://scripts/tankslime.gd" id="1_hfgmt"]
-[ext_resource type="Texture2D" uid="uid://dle7a8ukuw7rp" path="res://assets/TankSlime-export.png" id="2_4u5h8"]
+[ext_resource type="Texture2D" uid="uid://bi5kpbnooac2e" path="res://assets/TankPibble.png" id="2_hfgmt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4u5h8"]
+atlas = ExtResource("2_hfgmt")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_olwrs"]
+atlas = ExtResource("2_hfgmt")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tcbdv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4u5h8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_olwrs")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s31t4"]
 radius = 50.0
@@ -10,12 +32,12 @@ radius = 50.0
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_hfgmt")
-speed = null
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-scale = Vector2(3.91, 3.91)
-texture = ExtResource("2_4u5h8")
+position = Vector2(0, -10)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_tcbdv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["enemy"]]
 light_mask = 2

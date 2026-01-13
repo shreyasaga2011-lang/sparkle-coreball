@@ -1,7 +1,29 @@
-[gd_scene load_steps=4 format=3 uid="uid://2m1ye165xuxf"]
+[gd_scene load_steps=7 format=3 uid="uid://2m1ye165xuxf"]
 
 [ext_resource type="Script" uid="uid://cd2h742n34oj8" path="res://scripts/fast_slime.gd" id="1_tlk4p"]
-[ext_resource type="Texture2D" uid="uid://cjpxqfk2scr6q" path="res://assets/fastSlime-export.png" id="2_tlk4p"]
+[ext_resource type="Texture2D" uid="uid://nn2vscoie7vn" path="res://assets/FastPibble.png" id="2_tlk4p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ntr2d"]
+atlas = ExtResource("2_tlk4p")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2rwh"]
+atlas = ExtResource("2_tlk4p")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_me12o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ntr2d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2rwh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s31t4"]
 radius = 50.0
@@ -12,10 +34,12 @@ collision_mask = 2
 script = ExtResource("1_tlk4p")
 speed = null
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-scale = Vector2(3.91, 3.91)
-texture = ExtResource("2_tlk4p")
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_me12o")
+autoplay = "default"
+frame_progress = 0.30451253
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["enemy"]]
 light_mask = 2

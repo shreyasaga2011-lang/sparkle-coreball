@@ -1,8 +1,30 @@
-[gd_scene load_steps=5 format=3 uid="uid://m21l8gk1dh7n"]
+[gd_scene load_steps=8 format=3 uid="uid://m21l8gk1dh7n"]
 
 [ext_resource type="Script" uid="uid://dsuawt5o5fqmg" path="res://scripts/mage_slime.gd" id="1_xxj3p"]
 [ext_resource type="PackedScene" uid="uid://bx6jjp2wj8hv2" path="res://magic_bolt.tscn" id="2_qrngj"]
-[ext_resource type="Texture2D" uid="uid://chunedhcshj7r" path="res://assets/MageSlime-export.png" id="2_xxj3p"]
+[ext_resource type="Texture2D" uid="uid://rqarl0p828k5" path="res://assets/shootypibble.png" id="3_qrngj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yms27"]
+atlas = ExtResource("3_qrngj")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_stgwm"]
+atlas = ExtResource("3_qrngj")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q6km0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yms27")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_stgwm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s31t4"]
 radius = 50.0
@@ -13,14 +35,17 @@ collision_mask = 2
 script = ExtResource("1_xxj3p")
 projectile_scene = ExtResource("2_qrngj")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-scale = Vector2(3.91, 3.91)
-texture = ExtResource("2_xxj3p")
+position = Vector2(-3, -8)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_q6km0")
+autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["enemy"]]
 light_mask = 2
 visibility_layer = 4
+position = Vector2(-7, -2)
 scale = Vector2(1.0000001, 1.0000001)
 shape = SubResource("CircleShape2D_s31t4")
 

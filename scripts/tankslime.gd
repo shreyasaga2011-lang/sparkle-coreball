@@ -2,6 +2,7 @@ extends Area2D
 
 var health = 4
 var can_take_damage = true # Toggle for damage ticks
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 @onready var kill_tracker = get_tree().get_first_node_in_group("kill_tracker")
 @onready var player = get_tree().get_first_node_in_group("player")
@@ -60,7 +61,12 @@ func _physics_process(delta: float) -> void:
 			forcefield_timer = 0.0
 	else:
 		forcefield_timer = 0.0
+	var direction: Vector2 = (player.global_position - global_position).normalized()
 
+	if direction.x > 0:
+		animated_sprite_2d.flip_h = true
+	elif direction.x < 0:
+		animated_sprite_2d.flip_h = false
 
 func _on_area_exited(area: Area2D) -> void:
 	if area.is_in_group("forcefield"):
