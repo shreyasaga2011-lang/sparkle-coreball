@@ -18,8 +18,8 @@ func explosionUpgrade():
 var forcefieldBool = false
 func buyForceField():
 	forcefieldBool = true
-var forceBlast = false
 
+var forceBlast = false
 func buyForceBlast():
 	forceBlast = true
 
@@ -36,7 +36,7 @@ signal force_blast_requested
 
 func healthTick():
 	currentHealth -= 1
-	if forcefieldBool == true:
+	if forceBlast == true:
 		emit_signal("force_blast_requested")
 
 func healthAdd():

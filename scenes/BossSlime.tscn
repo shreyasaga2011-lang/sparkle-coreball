@@ -40,7 +40,7 @@ texture_filter = 1
 scale = Vector2(3.3, 3.3)
 sprite_frames = SubResource("SpriteFrames_jdw73")
 autoplay = "default"
-frame_progress = 0.14572726
+frame_progress = 0.3070838
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["enemy"]]
 light_mask = 2

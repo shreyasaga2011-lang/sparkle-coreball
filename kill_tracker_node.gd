@@ -8,7 +8,7 @@ var kills = 0
 func add_kill():
 	kills += 1
 
-var currentMoney = 0
+var currentMoney = 100000
 
 func add_money():
 	currentMoney += 30
